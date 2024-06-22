@@ -1,0 +1,54 @@
+CREATE TABLE batch (
+    bat_id INT PRIMARY KEY,
+    bat_name VARCHAR(30)
+);
+
+CREATE TABLE domain (
+    dom_id INT PRIMARY KEY,
+    dom_name VARCHAR(30)
+);
+
+CREATE TABLE professional (
+    prof_id INT PRIMARY KEY,
+    prof_name VARCHAR(30)
+);
+
+CREATE TABLE salary (
+    sal_id INT PRIMARY KEY
+);
+
+CREATE TABLE fee (
+    fee_id INT PRIMARY KEY
+);
+
+CREATE TABLE mentor (
+    men_id INT PRIMARY KEY,
+    men_name VARCHAR(50),
+    men_email VARCHAR(50),
+    bat_id INT,
+    prof_id INT,
+    sal_id INT,
+    FOREIGN KEY (bat_id) REFERENCES batch(bat_id),
+    FOREIGN KEY (prof_id) REFERENCES professional(prof_id),
+    FOREIGN KEY (sal_id) REFERENCES salary(sal_id)
+);
+
+CREATE TABLE learners (
+    len_id INT PRIMARY KEY,
+    len_name VARCHAR(50),
+    len_email VARCHAR(50),
+    bat_id INT,
+    dom_id INT,
+    fee_id INT,
+    FOREIGN KEY (bat_id) REFERENCES batch(bat_id),
+    FOREIGN KEY (dom_id) REFERENCES domain(dom_id),
+    FOREIGN KEY (fee_id) REFERENCES fee(fee_id)
+);
+
+DESC batch;
+DESC domain;
+DESC professional;
+DESC salary;
+DESC fee;
+DESC mentor;
+DESC learners;
